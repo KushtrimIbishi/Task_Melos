@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Page</title>
+    <style>
+        * {
+            background-color: wheat;
+        }
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .question-container {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="question-container">
+    <h1>Question:</h1>
+    <p>What is the capital of Kosova?</p>
+
+    <form id="answerForm">
+        <label for="answer">Your Answer:</label>
+        <input type="text" id="answer" required>
+        <button type="button" id="nextBtn">Next</button>
+    </form>
+</div>
+
+<script>
+    // Calculate the time when the user entered the page
+    const startTime = new Date().getTime();
+
+    // Disable the Next button initially
+    const nextBtn = document.getElementById('nextBtn');
+    nextBtn.disabled = true;
+
+    // Enable the Next button after 10 seconds
+    setTimeout(() => {
+        nextBtn.disabled = false;
+    }, 5000);
+
+    // Event listener for the Next button
+    nextBtn.addEventListener('click', () => {
+        // Calculate the elapsed time
+        const currentTime = new Date().getTime();
+        const elapsedTime = Math.floor((currentTime - startTime) / 1000);
+
+        // Check if the answer is not blank and the user stayed for 20 seconds
+        const answer = document.getElementById('answer').value.trim();
+        if (answer !== '' && elapsedTime >= 10) {
+            // Redirect to the next page 
+            window.location.href = 'congrats.html';
+            
+        } else {
+            alert(`You have to stay 10 seconds and provide a non-blank answer.`);
+        }
+    });
+</script>
+
+</body>
+</html>
