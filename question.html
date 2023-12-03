@@ -52,7 +52,8 @@
             const currentTime = new Date().getTime();
             const elapsedTime = Math.floor((currentTime - startTime) / 1000);
             const answer = document.getElementById('answer').value.trim();
-            if (answer !== '' && elapsedTime >= 10) {
+            // Check if the answer is 'Prishtina' and the time elapsed is at least 10 seconds
+            if (answer === 'Prishtina' && elapsedTime >= 10) {
                 window.location.href = 'congrats.html';
             } else {
                 alert(`You have to stay 10 seconds and provide a non-blank answer.`);
